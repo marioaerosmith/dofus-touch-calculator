@@ -1,0 +1,27 @@
+<div class="calculator-container">
+  <h2>Calculadora de Panes Dofus Touch</h2>
+  
+  <div class="form-group">
+    <label for="recipe-select">Selecciona el pan:</label>
+    <select id="recipe-select" [(ngModel)]="selectedRecipe" name="recipe" required>
+      <option value="" disabled selected>-- Selecciona --</option>
+      <option *ngFor="let recipe of recipes" [ngValue]="recipe">{{ recipe.name }}</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="quantity-input">Cantidad a hacer:</label>
+    <input id="quantity-input" type="number" [(ngModel)]="quantity" min="1" />
+  </div>
+
+  <button class="btn-calculate" (click)="calculate()">Calcular Ingredientes</button>
+
+  <div class="result" *ngIf="objectKeys(result).length > 0">
+    <h3>Ingredientes necesarios:</h3>
+    <ul>
+      <li *ngFor="let ingredient of objectKeys(result)">
+        {{ ingredient }}: {{ result[ingredient] }}
+      </li>
+    </ul>
+  </div>
+</div>
