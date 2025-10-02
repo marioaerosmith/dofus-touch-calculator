@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Calculadora de experiencia en oficios</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <h1>Calculadora de experiencia en oficios</h1>
+  <form id="exp-form">
+    <label for="nivelActual">Nivel actual del oficio (1-100):</label>
+    <input type="number" id="nivelActual" min="1" max="100" required /><br />
+
+    <label for="xpAcumulada">¿Conoces la experiencia acumulada del oficio hasta el momento?</label>
+    <input type="number" id="xpAcumulada" min="0" value="0" /><br />
+
+    <label for="nivelObjetivo">Nivel del oficio al que quieres llegar (1-100):</label>
+    <input type="number" id="nivelObjetivo" min="1" max="100" required /><br />
+
+    <button type="button" onclick="calcularExperiencia()">Calcular</button>
+  </form>
+
+  <div id="resultado"></div>
+
+  <script>
+    function calcularExperiencia() {
+      const nivelActual = parseInt(document.getElementById('nivelActual').value);
+      const xpAcumulada = parseInt(document.getElementById('xpAcumulada').value);
+      const nivelObjetivo = parseInt(document.getElementById('nivelObjetivo').value);
+      const resultadoDiv = document.getElementById('resultado');
+
+      // Validaciones básicas
+      if (nivelActual < 1 || nivelActual > 100 || nivelObjetivo < 1 || nivelObjetivo > 100) {
+        resultadoDiv.innerHTML = 'Por favor, ingresa niveles entre 1 y 100.';
+        return;
+      }
+      if (nivelObjetivo <= nivelActual) {
+        resultadoDiv.innerHTML = 'El nivel objetivo debe ser mayor que el nivel actual.';
+        return;
+      }
+
+      // Aquí implementarías la lógica para calcular experiencia necesaria
+      // Por ahora, solo hacemos un cálculo ficticio para ejemplo:
+      // Supongamos que para cada nivel se necesita 1000 XP adicional más que el anterior
+      let xpNecesaria = 0;
+      for (let i = nivelActual; i < nivelObjetivo; i++) {
+        xpNecesaria += 1000 + (i - 1) * 200; // ejemplo: XP crece en 200 por nivel
+      }
+      xpNecesaria -= xpAcumulada; // descontar XP acumulada
+
+      if (xpNecesaria < 0) xpNecesaria = 0; // no negativo
+
+      resultadoDiv.innerHTML =
+        'Experiencia necesaria para llegar al nivel ' +
+        nivelObjetivo +
+        ': ' +
+        xpNecesaria.toLocaleString() +
+        ' XP.';
+    }
+  </script>
+</body>
+</html>

@@ -1,10 +1,10 @@
 <div class="calculator-container">
   <h2>Calculadora de Panes Dofus Touch</h2>
-  
+
   <div class="form-group">
     <label for="recipe-select">Selecciona el pan:</label>
-    <select id="recipe-select" [(ngModel)]="selectedRecipe" name="recipe" required>
-      <option value="" disabled selected>-- Selecciona --</option>
+    <select id="recipe-select" [(ngModel)]="selectedRecipe" name="recipe">
+      <option [ngValue]="undefined">-- Selecciona --</option>
       <option *ngFor="let recipe of recipes" [ngValue]="recipe">{{ recipe.name }}</option>
     </select>
   </div>
@@ -16,12 +16,41 @@
 
   <button class="btn-calculate" (click)="calculate()">Calcular Ingredientes</button>
 
-  <div class="result" *ngIf="objectKeys(result).length > 0">
-    <h3>Ingredientes necesarios:</h3>
+  <section *ngIf="selectedRecipe">
+    <h2>Receta:</h2>
     <ul>
-      <li *ngFor="let ingredient of objectKeys(result)">
-        {{ ingredient }}: {{ result[ingredient] }}
+      <li *ngFor="let ing of objectKeys(recipeForOne)">
+        {{ recipeForOne[ing] * quantity }} x {{ ing }}
       </li>
     </ul>
-  </div>
+  </section>
+
+  <section *ngIf="objectKeys(harinasToCreate).length > 0">
+    <h2>Harinas a crear:</h2>
+    <div *ngFor="let harina of objectKeys(harinasToCreate)">
+      <div class="harina-header">{{ harina }}: ({{ harinasToCreate[harina] * quantity }})</div>
+      <div *ngIf="harinaRecipes[harina]" class="ingredientes-grid">
+        <div *ngFor="let row of getIngredientRows(harinaRecipes[harina], harinasToCreate[harina] * quantity)">
+          <div class="harina-ingrediente" *ngFor="let item of row">
+            {{ item.cantidad }} x {{ item.nombre }}
+          </div>
+        </div>
+      </div>
+      <ul *ngIf="!harinaRecipes[harina]" class="ingredientes-grid">
+  <li class="harina-ingrediente">
+    {{ 2 * harinasToCreate[harina] * quantity }} x {{ getBaseCereal(harina) || harina.replace('Harina de','').trim() }}
+  </li>
+</ul>
+
+    </div>
+  </section>
+
+  <section *ngIf="objectKeys(totals).length > 0">
+    <h2>Totales necesarios:</h2>
+    <ul>
+      <li *ngFor="let ing of objectKeys(totals)">
+        {{ totals[ing] }} x {{ ing }}
+      </li>
+    </ul>
+  </section>
 </div>

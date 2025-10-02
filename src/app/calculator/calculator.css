@@ -1,84 +1,105 @@
 .calculator-container {
-  max-width: 400px;
+  max-width: 500px;
   margin: 2rem auto;
-  padding: 2rem;
-  background: #f5f5f5;
+  padding: 1.2rem 1.6rem;
+  background: #f9f6f2;
   border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgb(0 0 0 / 0.1);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #333;
+  color: #5a3e2b;
 }
 
 h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-  color: #5d4037;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  font-size: 1.5rem;
+  border-bottom: 1px solid #d5c9a5;
+  padding-bottom: 0.3rem;
 }
 
 .form-group {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
 }
 
 label {
   display: block;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
   font-weight: 600;
 }
 
-select, input[type="number"] {
+select,
+input[type="number"] {
   width: 100%;
   padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  border: 1px solid #b8b894;
+  border-radius: 6px;
+  background: white;
   box-sizing: border-box;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.25s ease;
 }
 
-select:focus, input[type="number"]:focus {
+select:focus,
+input[type="number"]:focus {
+  border-color: #7a7832;
   outline: none;
-  border-color: #8d6e63;
-  box-shadow: 0 0 5px #bcaaa4;
+  box-shadow: 0 0 4px #a69662;
 }
 
 .btn-calculate {
   display: block;
   width: 100%;
-  background-color: #6d4c41;
+  background-color: #6d5a38;
   color: white;
-  padding: 0.75rem;
-  font-size: 1.1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.6rem 0;
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  font-weight: 700;
-  margin-top: 1rem;
+  margin-top: 10px;
   transition: background-color 0.3s ease;
 }
 
 .btn-calculate:hover {
-  background-color: #5d4037;
+  background-color: #55441f;
 }
 
-.result {
-  margin-top: 2rem;
-  background-color: white;
-  border-radius: 12px;
-  padding: 1rem;
-  box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0 1.2rem;
+  font-size: 0.85rem;
+  color: #5b4b1c;
 }
 
-.result h3 {
-  margin-bottom: 1rem;
-  color: #3e2723;
+li {
+  margin: 0.2rem 0;
 }
 
-.result ul {
-  list-style: disc inside;
-  padding-left: 0;
+.harinas-a-crear {
+  margin-top: 1.3rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #d3cca5;
 }
 
-.result li {
-  margin-bottom: 0.5rem;
-  font-size: 1rem;
+.ingredientes-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-bottom: 0.8rem;
 }
+
+.ingredientes-grid > div, .ingredientes-grid > ul {
+  display: flex;
+  flex-direction: row;
+}
+
+.ingredientes-grid .harina-ingrediente, .ingredientes-grid li.harina-ingrediente {
+  display: inline-block;
+  min-width: 120px;
+  margin-right: 1.4rem;
+  font-size: 0.98em;
+  list-style: none;
+}
+

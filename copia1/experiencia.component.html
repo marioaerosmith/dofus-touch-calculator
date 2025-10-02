@@ -1,0 +1,50 @@
+<div class="calculator-container">
+  <h2>Calculadora de experiencia de oficios</h2>
+
+  <div class="form-group">
+    <label for="nivelActual">Nivel actual</label>
+    <input id="nivelActual" type="number" min="1" max="100" [(ngModel)]="nivelActual" />
+  </div>
+
+  <div class="form-group">
+    <label for="expActual">Experiencia actual en nivel</label>
+    <input id="expActual" type="number" min="0" [(ngModel)]="expActual" />
+  </div>
+
+  <div class="form-group">
+    <label for="nivelObjetivo">Nivel objetivo</label>
+    <input id="nivelObjetivo" type="number" min="1" max="100" [(ngModel)]="nivelObjetivo" />
+  </div>
+
+  <div class="form-group">
+    <label for="bonusXP">Bonus de XP (%)</label>
+    <input id="bonusXP" type="number" min="0" max="500" [(ngModel)]="bonusXP" />
+  </div>
+
+  <button class="btn-calculate" (click)="calcularXP()">Calcular</button>
+
+  <div *ngIf="xpFaltante > 0">
+    <p>Experiencia faltante: <strong>{{ xpFaltante }}</strong></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let r of resultados">{{ r.slots }} case{{ r.slots > 1 ? 's' : '' }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td *ngFor="let r of resultados">
+            <span [ngClass]="{'error': r.cantidad === 'MAX'}">{{ r.cantidad }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <small><span class="error">MAX</span> significa que con esa cantidad de casillas no puedes alcanzar el nivel en este rango.</small>
+  </div>
+
+  <div *ngIf="nivelObjetivo <= nivelActual" class="error">
+    Nivel objetivo debe ser mayor que el nivel actual.
+  </div>
+</div>

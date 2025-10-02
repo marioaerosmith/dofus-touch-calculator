@@ -1,0 +1,66 @@
+<div class="calculator-container">
+  <h2>Calculadora de experiencia de oficio</h2>
+
+  <div class="form-group">
+    <label for="nivelActual">Nivel actual</label>
+    <input id="nivelActual" type="number" min="1" max="100" [(ngModel)]="nivelActual" />
+  </div>
+
+  <div class="form-group">
+    <label for="nivelObjetivo">Nivel objetivo</label>
+    <input id="nivelObjetivo" type="number" min="1" max="100" [(ngModel)]="nivelObjetivo" />
+  </div>
+
+  <div class="form-group">
+    <label for="bonusXP">Bonus de XP (%) (50 si tienes bonus pack)</label>
+    <input id="bonusXP" type="number" min="0" max="500" [(ngModel)]="bonusXP" />
+  </div>
+
+  <button class="btn-calculate" (click)="calcularXPCalcular()">Calcular</button>
+
+  <div *ngIf="xpFaltante > 0" class="results-container">
+    <p>Experiencia faltante para llegar al nivel <strong>{{ nivelObjetivo }}</strong>: <strong>{{ xpFaltante | number }}</strong></p>
+
+    <h3>Orden adecuado por casillas para llegar a nivel {{ nivelObjetivo }}</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Rango de niveles</th>
+          <th>Casillas</th>
+          <th>Experiencia en tramo</th>
+          <th>Recetas necesarias</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tramo of resultadosPorTramo">
+          <td>{{ tramo.rangoInicio }} a {{ tramo.rangoFin }}</td>
+          <td>{{ tramo.casillas }}</td>
+          <td>{{ tramo.xpTramo | number:'1.0-0' }}</td>
+          <td>{{ tramo.recetasNecesarias }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Llegar al nivel deseado usando solo un rango de casilla</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Rango de niveles</th>
+          <th>Casillas</th>
+          <th>Recetas necesarias</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let resumen of resultadosResumenDinamic">
+          <td>{{ resumen.rango }}</td>
+          <td>{{ resumen.casillas }}</td>
+          <td>{{ resumen.recetasNecesarias }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+
+

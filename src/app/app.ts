@@ -1,13 +1,28 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router'; // Si usas rutas
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { CalculatorComponent } from './calculator/calculator.component';
+import { ExperienciaComponent } from './experiencia/experiencia.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, CalculatorComponent],
+  standalone: true,
+  imports: [CommonModule, FormsModule, CalculatorComponent, ExperienciaComponent],
   templateUrl: './app.html',
-  styleUrls: ['./app.css']
+  styleUrls: ['./app.css'],
 })
 export class AppComponent {
-  protected readonly title = 'dofus-touch-calculator';
+  showCalc = false;
+  showExp = false;
+
+  showCalculator() {
+    this.showCalc = true;
+    this.showExp = false;
+  }
+
+  showExperiencia() {
+    this.showExp = true;
+    this.showCalc = false;
+  }
 }
+

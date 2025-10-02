@@ -1,0 +1,49 @@
+cd calculadora-dofus
+ng serve
+
+Para nivel de 1 a 2 pide 50de experiencia
+1 a 3 :90
+1 a 4 : 221
+1 a 5 : 391
+1 a 6 : 603
+1 a 7: 855
+1 a 8: 1149
+1 a 9 :1493
+1 a 10 :1861
+1: a 11: 2280
+12: 2742
+3247
+3790
+4389
+5028
+5712
+6443
+7230
+8047
+8930
+
+de 1 a 50 : 62441
+de 1 a 60: 100371
+de 1 a 80 : 240914
+de 1 a 89 : 355874
+de 1 a 90 : 371820
+de 1 a 91: 388532
+de 1 a 92: 406056
+de 1 a 93: 424436
+de 1 a 94: 443722
+de 1 a 95 :463966
+de 1 a 96 : 485224
+de 1 a 97:  507554
+de 1 a 98: 531021
+de 1 a 99: 555691
+
+listo, la experiencia faltante se arregló. 
+
+Pero ahora te enseñaré la logica de las casas o casillas.
+
+De nivel  1 hasta nivel 60 puedo hacer 2 casillas. y todo lo que haga de 2 casillas me da 10 de XP.
+De nivel 10 hasta nivel 80, puedo hacer 3 casillas, y todo lo que haga de 3 casillas me da 25 de XP.
+De nivel 20 a nivel 100 puedo hacer 4 casillas y todo lo que haga de 5 casillas me da 50 de XP.
+De nivel 40 a nivel 100 puedo hacer 5 casillas y todo lo que haga de 5 casillas me da 100 de XP.
+De nivel 60 a nivel 100 puedo hacer 5 casillas y todo lo que haga de 6 casillas me da 250 de XP.
+De nivel 80 a nivel 100 puedo hacer 7 casillas y todo lo que haga de 7 casillas me da 500 de XP.
